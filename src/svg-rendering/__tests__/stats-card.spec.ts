@@ -5,6 +5,11 @@ import { renderContributorStatsCard } from '../stats-card';
 
 import { type RepoWithStats } from '@/processStats';
 
+jest.mock('@/common/utils', () => ({
+  ...jest.requireActual('@/common/utils'),
+  getImageBase64FromURL: jest.fn().mockResolvedValue('data:image/jpeg;base64,MOCK'),
+}));
+
 const mockStats: RepoWithStats[] = [
   {
     name: 'Repo 1',
